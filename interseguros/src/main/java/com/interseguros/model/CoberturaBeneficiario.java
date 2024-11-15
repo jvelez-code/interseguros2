@@ -18,10 +18,7 @@ public class CoberturaBeneficiario {
 
     @Column(name = "nombre_beneficiario", nullable = false)
     private String nombreBeneficiario;
-
-    @Column(name = "apellido_beneficiario", nullable = false)
-    private String apellidoBeneficiario;
-
+    
     @Column(name = "documento_beneficiario", nullable = false)
     private String documentoBeneficiario;
 
@@ -35,7 +32,6 @@ public class CoberturaBeneficiario {
         this.idBeneficiario = idBeneficiario;
         this.relacionBeneficiario = relacionBeneficiario;
         this.documentoBeneficiario = documentoBeneficiario;
-        this.apellidoBeneficiario = apellidoBeneficiario;
         this.nombreBeneficiario = nombreBeneficiario;
         this.cobertura = cobertura;
     }
@@ -62,14 +58,6 @@ public class CoberturaBeneficiario {
 
     public void setDocumentoBeneficiario(String documentoBeneficiario) {
         this.documentoBeneficiario = documentoBeneficiario;
-    }
-
-    public String getApellidoBeneficiario() {
-        return apellidoBeneficiario;
-    }
-
-    public void setApellidoBeneficiario(String apellidoBeneficiario) {
-        this.apellidoBeneficiario = apellidoBeneficiario;
     }
 
     public String getNombreBeneficiario() {

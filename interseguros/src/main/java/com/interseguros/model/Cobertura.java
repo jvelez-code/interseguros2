@@ -25,10 +25,7 @@ public class Cobertura {
 
     @Column(name = "descripcion")
     private String descripcion;
-
-    @Column(name = "restricciones")
-    private String restricciones;
-
+    
     public Cobertura() {
     }
 
@@ -38,7 +35,6 @@ public class Cobertura {
 
     public Cobertura(Long idCobertura, String restricciones, String descripcion, BigDecimal montoCobertura, String nombreCobertura, DatosPoliza datosPoliza) {
         this.idCobertura = idCobertura;
-        this.restricciones = restricciones;
         this.descripcion = descripcion;
         this.montoCobertura = montoCobertura;
         this.nombreCobertura = nombreCobertura;
@@ -81,11 +77,4 @@ public class Cobertura {
         this.descripcion = descripcion;
     }
 
-    public String getRestricciones() {
-        return restricciones;
-    }
-
-    public void setRestricciones(String restricciones) {
-        this.restricciones = restricciones;
-    }
 }

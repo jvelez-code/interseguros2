@@ -31,21 +31,9 @@ public class DatosPoliza {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime fechaFinal;
 
-    @Column(name = "monto_asegurado", nullable = false)
-    private BigDecimal montoAsegurado;
-
     @Column(name = "prima", nullable = false)
     private BigDecimal prima;
-
-    @Column(name = "exclusiones", nullable = false)
-    private String exclusiones;
-
-    @Column(name = "duracion_meses", nullable = false)
-    private String duracionMeses;
-
-    @Column(name = "condiciones_reclamacion", nullable = false)
-    private String condicionesReclamacion;
-
+    
     @Column(name = "estado", nullable = false)
     private String estado;
 
@@ -58,11 +46,7 @@ public class DatosPoliza {
         this.subtipoSeguro = subtipoSeguro;
         this.fechaInicial = fechaInicial;
         this.fechaFinal = fechaFinal;
-        this.montoAsegurado = montoAsegurado;
         this.prima = prima;
-        this.exclusiones = exclusiones;
-        this.duracionMeses = duracionMeses;
-        this.condicionesReclamacion = condicionesReclamacion;
         this.estado = estado;
     }
 
@@ -106,44 +90,12 @@ public class DatosPoliza {
         this.fechaFinal = fechaFinal;
     }
 
-    public BigDecimal getMontoAsegurado() {
-        return montoAsegurado;
-    }
-
-    public void setMontoAsegurado(BigDecimal montoAsegurado) {
-        this.montoAsegurado = montoAsegurado;
-    }
-
     public BigDecimal getPrima() {
         return prima;
     }
 
     public void setPrima(BigDecimal prima) {
         this.prima = prima;
-    }
-
-    public String getExclusiones() {
-        return exclusiones;
-    }
-
-    public void setExclusiones(String exclusiones) {
-        this.exclusiones = exclusiones;
-    }
-
-    public String getDuracionMeses() {
-        return duracionMeses;
-    }
-
-    public void setDuracionMeses(String duracionMeses) {
-        this.duracionMeses = duracionMeses;
-    }
-
-    public String getCondicionesReclamacion() {
-        return condicionesReclamacion;
-    }
-
-    public void setCondicionesReclamacion(String condicionesReclamacion) {
-        this.condicionesReclamacion = condicionesReclamacion;
     }
 
     public String getEstado() {
