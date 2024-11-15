@@ -1,0 +1,144 @@
+<mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>DETALLE</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+        <!-- Cedula Cliente Column -->
+        <ng-container matColumnDef="cedulaCliente">
+          <th mat-header-cell *matHeaderCellDef>Cédula Cliente</th>
+          <td mat-cell *matCellDef="let element">{{element.cedulaCliente}}</td>
+        </ng-container>
+      
+        <!-- Tipo Documento Column -->
+        <ng-container matColumnDef="tipoDocumento">
+          <th mat-header-cell *matHeaderCellDef>Tipo Documento</th>
+          <td mat-cell *matCellDef="let element">{{element.tipoDocumento}}</td>
+        </ng-container>
+      
+        <!-- Correo Cliente Column -->
+        <ng-container matColumnDef="correoCliente">
+          <th mat-header-cell *matHeaderCellDef>Correo Cliente</th>
+          <td mat-cell *matCellDef="let element">{{element.correoCliente}}</td>
+        </ng-container>
+      
+        <!-- Nro Celular Column -->
+        <ng-container matColumnDef="nroCelular">
+          <th mat-header-cell *matHeaderCellDef>Nro Celular</th>
+          <td mat-cell *matCellDef="let element">{{element.nroCelular || 'No disponible'}}</td>
+        </ng-container>
+      
+        <!-- Ubicación Column -->
+        <ng-container matColumnDef="ubicacion">
+          <th mat-header-cell *matHeaderCellDef>Ubicación</th>
+          <td mat-cell *matCellDef="let element">{{element.ubicacion.departamento}}, {{element.ubicacion.municipio}}</td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      
+    </mat-card-content>
+    <mat-card-footer class="example-card-footer">
+      <mat-chip-set aria-label="Chihuahua traits">
+        <mat-chip>Ventas</mat-chip>
+        <mat-chip>Informes</mat-chip>
+        <mat-chip  (click)="irACliente()">Cancelar</mat-chip>
+      </mat-chip-set>
+    </mat-card-footer>
+  </mat-card>
+  <br>
+
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>COTIZACIÓN</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="example-full-width">
+      <table>
+        <tr>
+          <td>
+            <mat-form-field >
+              <mat-label>Tipo Seguro</mat-label>
+               <mat-select placeholder="SELECCIÓN" [(value)]="tipoSeguro" (selectionChange)="subtipoGestion($event.value)" >
+                  @for (p of (  tipoSeguro$ | async ); track p) {
+                      <mat-option [value]="p.idTipoSeguro"> {{p.tipoSeguro}} </mat-option>
+                    }
+               </mat-select>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>Subtipo Seguro</mat-label>
+              <mat-select placeholder="SELECCIÓN" [(value)]="subtipoSeguro" (selectionChange)="descripSubtipo($event.value)">
+                @for (p of (  subtipoSeguro$ | async ); track p) {
+                  <mat-option [value]="p.idSubtipoSeguro"> {{p.subtipoSeguro}} </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div>
+      <mat-form-field   class="example-full fixed-width"  appearance="outline">
+        <mat-label>Observaciones</mat-label>
+        <textarea matInput placeholder="Observación"  [(ngModel)]="observacionTipo" readonly></textarea>
+      </mat-form-field>
+
+    </div>
+
+    <div>
+    <form class="example-form" [formGroup]="formPoliza"  (ngSubmit)="guardarCliente()">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>reclamacion</mat-label>
+            <input matInput type="text"  placeholder="Ingrese reclamacion" formControlName="reclamacion">
+            </mat-form-field>
+          </td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>duracion Meses</mat-label>
+            <input matInput type="text"  placeholder="Ingrese duracion" formControlName="duracion">
+            </mat-form-field>
+          </td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>monto</mat-label>
+            <input matInput type="text"  placeholder="Ingrese monto" formControlName="monto">
+            </mat-form-field>
+          </td>
+        </tr>
+
+        <tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>exclusiones</mat-label>
+            <input matInput type="text"  placeholder="Ingrese exclusiones" formControlName="exclusiones">
+            </mat-form-field>
+          </td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>prima</mat-label>
+            <input matInput type="text"  placeholder="Ingrese prima" formControlName="prima">
+            </mat-form-field>
+          </td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>subtipo</mat-label>
+            <input matInput type="text"  placeholder="Ingrese subtipo" formControlName="subtipo">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+ 
+  
+    </mat-card-content>
+    <mat-card-footer class="example-card-footer">
+      <mat-chip-set aria-label="Chihuahua traits">
+        <mat-chip>Guardar</mat-chip>
+        <mat-chip  (click)="irACliente()">Cancelar</mat-chip>
+      </mat-chip-set>
+    </mat-card-footer>
+  </mat-card>

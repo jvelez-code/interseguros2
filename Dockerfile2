@@ -1,0 +1,16 @@
+# Usa una imagen base de OpenJDK
+FROM openjdk:21-jdk-slim
+
+# Copia el archivo WAR al contenedor
+COPY aseguradora.war /usr/local/bin/aseguradora.war
+
+EXPOSE 9898
+
+# Establece el comando para ejecutar el archivo WAR
+ENTRYPOINT ["java", "-jar", "/usr/local/bin/aseguradora.war"]
+
+
+
+
+#docker build  -t iaseguradoras .
+#docker run -d -it --name caseguradoras -p 9899:9898 iaseguradoras

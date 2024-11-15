@@ -1,0 +1,114 @@
+
+<div [hidden]="cardBuscar">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div class="center">
+          <mat-card-title>CLIENTE</mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+
+        <form [formGroup]="formAsignar" (ngSubmit)="buscarCliente()">
+          <mat-form-field appearance="fill">
+            <mat-label>Nro Documento</mat-label>
+            <input matInput placeholder="Documento" type="number" formControlName="cedula">
+          </mat-form-field>  
+          <div>
+          <button mat-stroked-button type="submit" [disabled]="formAsignar.invalid">
+            <mat-icon>call</mat-icon>
+            <span>Consultar</span>
+          </button>
+        </div>
+        </form>
+
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+    </mat-card>
+  </div>
+  <br>
+
+  <div [hidden]="!cardBuscar">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <div class="center">
+          <mat-card-title>CLIENTE NUEVO</mat-card-title>
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="formCrear" (ngSubmit)="guardarCliente()">
+
+            <mat-form-field appearance="fill">
+              <mat-label>Tipo Documento</mat-label>
+              <mat-select formControlName="tipoDocu">
+                <mat-option value="1">CC</mat-option>
+                <mat-option value="2">NIT</mat-option>
+              </mat-select>
+          </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Nro Documento</mat-label>
+              <input matInput placeholder="Documento" type="number" formControlName="nrocedula" readonly>
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Correo Electrónico</mat-label>
+              <input matInput type="email" formControlName="correoElec" placeholder="Correo electrónico">
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Celular</mat-label>
+              <input matInput placeholder="Celular"  formControlName="celular">
+            </mat-form-field>
+          
+            <mat-form-field appearance="fill">
+              <mat-label>Ubicación</mat-label>
+              <mat-select placeholder="SELECCIÓN" formControlName="ubicacion">
+                @for (p of ( ubicacion$ | async ); track p) {
+                <mat-option [value]="p.codUbicacion"> {{p.municipio}}{{"--"}}{{p.departamento}} </mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+          
+           <div>
+            <button mat-stroked-button type="submit" [disabled]="formCrear.invalid">
+                <mat-icon>call</mat-icon>
+                <span>Consultar</span>
+            </button>
+            <button mat-stroked-button routerLink='/cliente' type="button" (click)="cancelar()">
+              <mat-icon>call</mat-icon>
+              <span>Cancelar</span>
+          </button>
+
+            </div>
+          
+          </form>
+          
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+    </mat-card>
+  </div>
+
+
+
+  <!--
+<hr>
+<pre>
+  estado: {{formAsignar.valid}}
+  <br>
+    Status: {{formAsignar.status}}
+  </pre>
+<pre>
+    {{formAsignar.value | json }}
+  </pre>
+
+  <hr>
+<pre>
+  estado: {{formCrear.valid}}
+  <br>
+    Status: {{formCrear.status}}
+  </pre>
+<pre>
+    {{formCrear.value | json }}
+  </pre>-->

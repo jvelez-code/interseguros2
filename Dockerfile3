@@ -1,0 +1,19 @@
+# Selecciona una imagen base de Tomcat
+FROM tomcat:10.1.14-jdk21
+
+
+
+# Copia el archivo WAR de la aplicación en el directorio webapps de Tomcat
+COPY aseguradora.war /usr/local/tomcat/webapps/
+COPY ./appAseguradora/dist/app-aseguradora       /usr/local/tomcat/webapps/
+
+RUN apt-get update && apt-get install -y tzdata && \
+    ln -fs /usr/share/zoneinfo/America/Bogota /etc/localtime && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+    
+EXPOSE 8080
+
+# Comando de inicio de Tomcat
+CMD ["catalina.sh", "run"]
+

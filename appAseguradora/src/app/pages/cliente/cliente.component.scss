@@ -1,0 +1,46 @@
+body {
+    background-color: red; /* Color de fondo suave, pero con contraste */
+    margin: 0;
+    font-family: Arial, sans-serif; /* Fuente básica para mejor legibilidad */
+}
+
+/* CARD */
+.example-card {
+    max-width: 500px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 3rem;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; /* Color de fondo suave */
+  }
+  
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .mat-form-field {
+    margin-bottom: 16px; /* Ajusta este valor según sea necesario */
+  }
+  
+  /* Si usas un contenedor */
+  .form-field-container {
+    display: flex;
+    flex-direction: column; /* Asegura que los campos se apilen verticalmente */
+  }
+  
+  .form-field-container mat-form-field {
+    margin-bottom: 16px; /* Espaciado adicional */
+  }
+  
+  .mat-stroked-button {
+    background-color: #007BFF; /* Color del botón */
+    color: red; /* Color del texto del botón */
+}
